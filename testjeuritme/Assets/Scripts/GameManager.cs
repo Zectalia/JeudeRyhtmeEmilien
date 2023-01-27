@@ -11,8 +11,10 @@ public class GameManager : MonoBehaviour
     public bool startPlaying;
 
     public BeatScroller theBS;
+    public GameObject flammes;
 
     public static GameManager instance;
+    public float timeRemaining = 10;
 
     public int currentScore;
     public int scorePerNote = 100;
@@ -65,14 +67,11 @@ public class GameManager : MonoBehaviour
                 theMusic.Play();
             }
 
-
-
-
-
         }
-        else if ( Input.GetKeyDown(KeyCode.P))
+        else if (timeRemaining > 0)
         {
-            if (!resultsScreen.activeInHierarchy)
+            timeRemaining -= Time.deltaTime;
+            if (timeRemaining < 0)
             {
                 resultsScreen.SetActive(true);
                 Debug.Log("stpppppp");
@@ -120,6 +119,16 @@ public class GameManager : MonoBehaviour
             {
                 resultsScreen.SetActive(false);
             }
+            
+            if (currentMultiplier > 3)
+        {
+            flammes.SetActive(true);
+        }
+
+            if (currentMultiplier < 3)
+        {
+            flammes.SetActive(false);
+        }
 
 
         }
@@ -140,6 +149,8 @@ public class GameManager : MonoBehaviour
                 currentMultiplier++;
             }
         }
+
+        
 
         multiText.text = "Multiplier : x" + currentMultiplier;
 

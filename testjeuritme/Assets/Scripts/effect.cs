@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class effect : MonoBehaviour
 {
-
     public float lifetime = 1f;
     // Start is called before the first frame update
     void Start()
@@ -14,7 +13,7 @@ public class effect : MonoBehaviour
 
     // Update is called once per frame
     void Update()
-    {
-        Destroy(gameObject, lifetime);
+    {   
+        Destroy(gameObject, lifetime); 
     }
 }
